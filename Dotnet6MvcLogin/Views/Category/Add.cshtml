@@ -1,0 +1,39 @@
+﻿@model Dotnet6MvcLogin.Models.Domain.Category
+
+@{
+    
+}
+
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+@Html.ValidationSummary()
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 center-block">
+            <h3>Category</h3>
+            <form asp-action="Add" method="post">
+                <div class="form-group">
+                    <label>Item category</label>
+                    <input type="text" class="form-control" asp-for="CategoryName" />
+                    <span class="text-danger" asp-validation-for="CategoryName"></span>
+                </div>
+
+
+
+
+
+                @if (TempData["msg"] != null)
+                {
+                    <div class="form-group">
+                        <span class="text-info">@TempData["msg"]</span>
+                    </div>
+                }
+
+                <button type="submit" class="btn btn-info">Submit</button>
+                
+                    @*<input type="submit"  value="Add" asp-action="Add" class="btn btn-primary" />*@
+                
+                <a class="btn btn-secondary" href="/Category/CategoryList">All records</a>
+            </form>
+        </div>
+    </div>
+</div>

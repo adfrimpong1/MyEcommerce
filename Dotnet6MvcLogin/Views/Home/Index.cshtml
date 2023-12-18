@@ -1,0 +1,72 @@
+﻿@model Dotnet6MvcLogin.Models.DTO.ItemListVm;
+@{
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+<section class="search-bar">
+    <form method="get" asp-action="Index">
+        <input type="text" name="term" placeholder="search here">
+        <button type="submit"><i class="fa fa-search">Search</i></button>
+        <a class="btn btn-info" href="/Home/Index">All</a>
+    </form>
+</section>
+
+
+
+<div id="fh5co-work-section" class="movies">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center fh5co-heading animate-box">
+                <h2>Available Items</h2>
+
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model.ItemList)
+            {
+
+                <div class="col-md-4 animate-box">
+                    <a onclick="window.location.href='/Home/ItemDetail?itemId=@item.Id'" class="item-grid text-center">
+                        <div class="image" style="background-image: url(/Uploads/@item.ItemImage)"></div>
+                        <div class="v-align">
+                            <div class="v-align-middle">
+                                <h3 class="title">@item.ItemName</h3>
+                                <h5 class="category">GH₵ @item.Price</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+
+            }
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="pagination">
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        if (i == Model.CurrentPage)
+        {
+            <a href="/Home/Index?currentPage=@i&term=@Model.Term" class="active">@i</a>
+        }
+        else
+        {
+            <a href="/Home/Index?currentPage=@i&term=@Model.Term">@i</a>
+
+        }
+    }
+
+</div>
+
+

@@ -1,0 +1,28 @@
+﻿@model Dotnet6MvcLogin.Models.Domain.Item
+
+@{
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+<div class="movie-detail w-80 m-auto">
+    <div class="img-container">
+        <img alt="image" src="/Uploads/@Model.ItemImage">
+    </div>
+
+    <div class="detail-container">
+        <h3>@Model.ItemName</h3>
+        <h4>Category: @Model.CategoryNames</h4>
+        <h4>Release Year: @Model.ReleaseYear</h4>
+        <h4>Quantity : @Model.Quantity</h4>
+        <h4>Price(GH₵) : @Model.Price</h4>
+        <h4>Made In : @Model.MadeIn</h4>
+        <h4>Description : @Model.ItemDescription</h4>
+    </div>
+</div>
+<div class="w-80 m-auto">
+    <a href="/Home/Index" class="btn btn-default">Back</a>
+</div>
+<div class="w-80 m-auto">
+    <a href="/Home/Index" class="btn btn-default">Purchase</a>
+</div>

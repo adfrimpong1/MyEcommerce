@@ -1,0 +1,42 @@
+﻿@model Dotnet6MvcLogin.Models.DTO.ItemListVm
+@{
+
+}
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/forms.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+<div class="tbl-container">
+    <h2>Add Items</h2>
+
+    <table>
+        <tr>
+            <th>Item Name</th>
+            <th>Image</th>
+            <th>Item Size</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var item in Model.ItemList)
+        {
+            <tr>
+                <td>@item.ItemName</td>
+                <td><img style="height:60px;width:80px" src="/Uploads/@item.ItemImage" /></td>
+                <td>@item.ItemSize</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>@item.CategoryNames</td>
+                <td>
+                    <a href="/Item/Edit?id=@item.Id" class="btn btn-default"><i class="fa fa-edit">Edit</i></a>
+                    <a onclick="return window.confirm('Are you sure?')" href="/Item/Delete?id=@item.Id" class="btn btn-danger">Delete<i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="input-container">
+        <a href="/Item/Add" class="btn btn-sec">Back</a>
+    </div>
+</div>

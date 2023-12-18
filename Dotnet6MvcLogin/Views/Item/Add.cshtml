@@ -1,0 +1,88 @@
+﻿@model Dotnet6MvcLogin.Models.Domain.Item
+
+@{
+    
+}
+
+@Html.ValidationSummary()
+<div class="container"> 
+    <div class="row">
+        <div class="col-md-6 center-block">
+            <h3>Add Item</h3>
+            <form asp-action="Add" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" class="form-control" asp-for="ItemName" />
+                    <span class="text-danger" asp-validation-for="ItemName"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Image File</label>
+                    <input type="file" class="form-control" asp-for="ImageFile" />
+                    <span class="text-danger" asp-validation-for="ImageFile"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Item Desciption</label>
+                    <input type="text" class="form-control" asp-for="ItemDescription" />
+                    <span class="text-danger" asp-validation-for="ItemDescription"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Item Size</label>
+                    <input type="number" class="form-control" asp-for="ItemSize" />
+                    <span class="text-danger" asp-validation-for="ItemSize"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Item Price</label>
+                    <input type="text" class="form-control" asp-for="Price" />
+                    <span class="text-danger" asp-validation-for="Price"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Item Quantity</label>
+                    <input type="number" class="form-control" asp-for="Quantity" />
+                    <span class="text-danger" asp-validation-for="Quantity"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select asp-items="Model.CategoryList" class="input" asp-for="Categories" multiple>
+                        <option value="">--select--</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="Categories"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Made In (Country/State/Region)</label>
+                    <input type="text" class="form-control" asp-for="MadeIn" />
+                    <span class="text-danger" asp-validation-for="MadeIn"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Release Year</label>
+                    <input type="text" class="form-control" asp-for="ReleaseYear" />
+                    <span class="text-danger" asp-validation-for="ReleaseYear"></span>
+                </div>
+
+
+
+
+
+                @if (TempData["msg"] != null)
+                {
+                    <div class="form-group">
+                        <span class="text-info">@TempData["msg"]</span>
+                    </div>
+                }
+
+                <button type="submit" class="btn btn-info">Submit</button>
+
+                @*<input type="submit"  value="Add" asp-action="Add" class="btn btn-primary" />*@
+
+                <a class="btn btn-secondary" href="/Item/ItemList">All records</a>
+            </form>
+        </div>
+    </div>
+</div>
